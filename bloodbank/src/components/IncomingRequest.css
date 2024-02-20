@@ -1,0 +1,28 @@
+.incoming-requests-container {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 99%; 
+}
+
+.patient-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%; 
+  margin-left: 20px;
+}
+
+.patient-details div {
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); 
+  transition: box-shadow 0.3s ease; 
+}
+
+.patient-details div:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); 
+}

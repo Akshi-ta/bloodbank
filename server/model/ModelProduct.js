@@ -1,5 +1,30 @@
 const mongoose = require("mongoose");
 function getProductModel() {
+
+    let signupSchema = mongoose.Schema(
+        {
+            email:{type:String , unique:true, required:true, index:true},
+            password: String
+        },
+        {
+            versionKey: false,
+        }
+    )
+    let profileSchema = mongoose.Schema(
+        {
+            email:{type:String , unique:true, required:true, index:true},
+            fn: String,
+            ln: String,
+            address: String,
+            city: String,
+            state: String,
+            aadharcardnumber:String,
+            picpath:String
+        },
+        {
+            versionKey: false,
+        }
+    )
     let mySchema = mongoose.Schema(
         {
             pName: String,
@@ -24,7 +49,10 @@ function getProductModel() {
         }
     )
     const ProductModel = mongoose.model("Information", mySchema);
-    return ProductModel;
+    const SignupInfo = mongoose.model("SignupInfo", signupSchema);
+    const ProfileInfo = mongoose.model("ProfileInfo" , profileSchema );
+    
+    return {ProductModel,SignupInfo,ProfileInfo};
 }
 module.exports = { getProductModel }
 

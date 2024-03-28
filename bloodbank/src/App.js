@@ -8,6 +8,10 @@ import MakeRequest from './components/MakeRequest';
 import Home from './components/Home';
 import IncomingRequest from './components/IncomingRequest';
 import LoadingBar from 'react-top-loading-bar';
+import Login from './components/Login';
+import Register from './components/Register';
+import Profile from './components/Profile';
+
 const App = () => {
   const [progress, setProgress] = useState(0);
   const setProgressUtil = (progress) => {
@@ -26,9 +30,9 @@ const App = () => {
           <Route exact path="/contact" element={<Contact />}></Route>
           <Route exact path="/MakeRequest" element={<MakeRequest />}></Route>
           {/* <Route exact path="/requests" element={<Requests/>}></Route> */}
-          {/* <Route exact path="/profile" element={<Profile/>}></Route>  */}
-          {/* <Route exact path="/Login" element={<Login/>}></Route> */}
-          {/* <Route exact path="/Register" element={<Register/>}></Route> */}
+          <Route exact path="/profile" element={<Profile/>}></Route> 
+          <Route exact path="/Login" element={<Login/>}></Route>
+          <Route exact path="/Register" element={<Register/>}></Route>
         </Routes>
         <Footer />
     </>

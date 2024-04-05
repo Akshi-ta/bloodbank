@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import axios from "axios";
 import './style.css';
 import '../index.css';
+import {  useNavigate } from 'react-router-dom';
 
 const MakeRequest = () => {
+    const Navigate = useNavigate();
     const [isChecked, setIsChecked] = useState(false);
     const [isInputDisabled, setIsInputDisabled] = useState(false);
     const [obj, setObj] = useState({
@@ -57,6 +59,7 @@ const MakeRequest = () => {
         else{
             alert(servermesg.data.err);
         }
+        Navigate("/requests");
     }
 
     function doApply() {

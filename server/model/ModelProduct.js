@@ -18,6 +18,7 @@ function getProductModel() {
             address: String,
             city: String,
             state: String,
+            bloodgroup:String,
             aadharcardnumber:String,
             picpath:String
         },

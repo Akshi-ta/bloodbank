@@ -10,7 +10,8 @@ export default function Profile() {
         address: "",
         city: "",
         state: "",
-        aadharcardnumber:"",
+        bloodgroup: "",
+        aadharcardnumber: "",
         hdn: "",
         pic: null
     })
@@ -69,7 +70,7 @@ export default function Profile() {
         }
         alert(JSON.stringify(formdata));
         const servermesg = await axios.post(url, formdata, { headers: { 'Content-Type': 'multipart/form-data' } });
-  
+
 
         if (servermesg.data.status === true) {
             alert("done");
@@ -90,8 +91,8 @@ export default function Profile() {
                         </p>
                         <input type="text" name="email" onChange={doupdate} class="ml-10 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
                     </div>
-                    <button className="mt-20 ml-20 flex w-28 h-10 justify-center rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" 
-                    onClick={doFind}>Search</button>
+                    <button className="mt-20 ml-20 flex w-28 h-10 justify-center rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        onClick={doFind}>Search</button>
                 </div>
                 <div class="grid md:grid-cols-2 grid-cols-1">
                     <div class="mt-10">
@@ -116,7 +117,7 @@ export default function Profile() {
                     </div>
 
                 </div>
-                <div class="grid md:grid-cols-2 grid-cols-1">
+                <div class="grid md:grid-cols-3 grid-cols-1">
                     <div class="mt-10">
                         <p class="mx-10  my-2">
                             City
@@ -128,6 +129,23 @@ export default function Profile() {
                             State
                         </p>
                         <input type="text" name="state" value={obj.state} onChange={doupdate} class="ml-10 block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
+                    </div>
+                    <div className="col-md-4 form-group mt-10">
+                        <p class="mx-10  my-2">
+                            BloodGroup
+                        </p>
+                        <select name="bloodgroup" id="bloodGroup" onChange={doupdate} value={obj.bloodgroup} className="form-select" required>
+                            <option value="">Select Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                        <div className="validate"></div>
                     </div>
                 </div>
                 <div className="grid grid-cols-1  md:grid-cols-2">

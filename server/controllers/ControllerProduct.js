@@ -4,6 +4,9 @@ const path = require("path");
 
 function doRequest(req, resp) {
     console.log(req.body);
+    const bloodgroup = req.body.bloodGroup;
+    const city= req.body.city;
+    const state = req.body.state;
     const info = new ProductModel(req.body);
     info.save().then((ans) => {
         resp.json({ status: true, rec: ans, out: "yay" });
@@ -12,6 +15,34 @@ function doRequest(req, resp) {
             status: false,
             error: err
         })
+    })
+    fetchUser(bloodgroup, city, state);
+}
+
+function fetchUser(bloodgroup , city , state)
+{
+    ProfileInfo.find({bloodgroup:bloodgroup , city:city , state:state}).then((result)=>{
+        console.log(result);
+    }).catch((err)=>{
+        console.log(err);
+    })
+}
+
+function dofetchIncomingRequest(req,resp)
+{
+    ProfileInfo.find({ email: req.body.email }).then((result) => {
+        // console.log(result[0]);
+        const bloodgroup = result[0].bloodgroup;
+        const city= result[0].city;
+        const state = result[0].state;
+        resp.set("json");
+        ProductModel.find({bloodGroup:bloodgroup , city:city , state:state}).then((ans)=>{
+            resp.json({status:true , res:ans})
+        }).catch((err)=>{
+            resp.json({status:false, err:err.message})
+        })
+    }).catch(function (err) {
+        resp.json({ status: false, res: err.message });
     })
 }
 
@@ -102,4 +133,16 @@ function doUpdate(req, resp) {
     })
 }
 
-module.exports = { doRequest , doLogin, doRegister ,findd , doSave , doUpdate};
+function dofetchData(req, resp)
+{
+    // console.log(req.body.email);
+    resp.set("json");
+    ProductModel.find({cEmail:req.body.email}).then((result)=>{
+        // console.log(result);
+        resp.json({status:true , res:result});
+    }).catch((err)=>{
+        resp.json({status:false , error:err})
+    })
+}
+
+module.exports = { doRequest , doLogin, doRegister ,findd , doSave , doUpdate , dofetchData , dofetchIncomingRequest};

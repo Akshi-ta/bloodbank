@@ -24,7 +24,9 @@ export default function Login()
         if(servermesg.data.status === true)
         {
             // alert(JSON.stringify(servermesg.data));
-            alert("login successfull");
+            localStorage.setItem("email" , loginInfo.email);
+            // alert("login successfull");
+            alert("welcome "+localStorage.getItem("email"));
             // if(servermesg.data.type === "Grower")
             // {
             //   navigate("/DashBoard_g");

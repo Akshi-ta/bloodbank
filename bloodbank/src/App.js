@@ -12,6 +12,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Requests from './components/Requests';
+import { AuthProvider } from './components/AuthContext';
 
 const App = () => {
   const [progress, setProgress] = useState(0);
@@ -19,6 +20,7 @@ const App = () => {
     setProgress(progress);
   }
   return (
+    <AuthProvider>
     <>
 
         <LoadingBar color="#f11946" progress={progress} onLoaderFinished={() => setProgress(0)} />
@@ -37,7 +39,7 @@ const App = () => {
         </Routes>
         <Footer />
     </>
-
+    </AuthProvider>
   )
 }
 
